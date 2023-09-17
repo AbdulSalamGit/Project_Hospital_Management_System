@@ -1,0 +1,54 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+<div class="container" style="margin-top:50px ;">
+    	<h2 class="text-center">Add Patient</h2>
+        <br><br>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Patient Name</label>
+                <input type="text" class="form-control" id="username" name="name" required>
+            </div>
+            <div class="mb-3">
+             <label for="contact" class="form-label">Gender</label>
+                 <input type="text" class="form-control" id="gender" name="gender" required>
+            </div>
+
+            <div class="mb-3">
+             <label for="contact" class="form-label">Mobile</label>
+                 <input type="text" class="form-control" id="mobile" name="mobile" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="special" class="form-label">Disease</label>
+                <input type="text" class="form-control" id="disease" name="disease" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="special" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <button type="submit" value="submit" class="btn btn-primary  form-control">Submit</button>
+        </form>
+    </div>
+
+
+{% if error == 'no' %}
+<script>
+    alert('Record Saved successfully');
+    window.location = "{% url 'view_doctor' %}";
+</script>
+{% endif %}
+
+{% if error == 'yes' %}
+<script>
+    alert('Something went wrong, Try again');
+</script>
+{% endif %}
+
+
+
+{% endblock%}

@@ -1,0 +1,32 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">Appointment View</h2>
+
+    <table class="table table-condensed" id="example">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Patient Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.doctor }}</td>
+                <td>{{ appointment.patient }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td><a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-danger" onclick="return confirm('Are you sure to delete');">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

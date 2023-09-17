@@ -1,0 +1,39 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="container" style="margin-top:50px">
+	<br><br>
+  <h2 class="text-center">Patient View</h2>
+  
+  <table class="table table-condensed" id="example" >
+    <thead>
+      <tr>
+        <th>Patient ID</th>
+        <th>Patient Name</th>
+        <th>Gender</th>
+        <th>Mobile No</th>
+        <th>Disease</th>
+        <th>Address</th>
+         <th>Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for i in patient %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.mobile}}</td>
+        <th>{{i.Diseases}}</th>
+        <th>{{i.address}}</th>
+        <th><a href="{% url 'delete_patient' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure to delete');">Delete</a></th>
+
+
+      </tr>
+      	{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock%}
